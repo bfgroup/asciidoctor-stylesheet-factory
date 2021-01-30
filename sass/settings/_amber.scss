@@ -1,0 +1,223 @@
+// Copyright René Ferdinand Rivera Morell 2021
+// Distributed under the Boost Software License, Version 1.0.
+// (See http://www.boost.org/LICENSE_1_0.txt)
+
+// Amber monitor phosphor P3 color at 602 nm wavelength.
+// 	https://en.wikipedia.org/wiki/Phosphor#Standard_phosphor_types
+// RGB computed using this bit of C++ code:
+// 	https://godbolt.org/z/hbn1d4
+// Which is derived from StackOverflow code in:
+// 	https://stackoverflow.com/questions/3407942/rgb-values-of-visible-spectrum/22681410#22681410
+
+$amber: #FA9300 !default;
+
+// Amber corresponding gradient.
+
+$amber-900: lighten($amber,20%);
+$amber-800: lighten($amber,10%);
+$amber-700: $amber;
+$amber-600: darken($amber,10%);
+$amber-500: darken($amber,20%);
+$amber-400: darken($amber,30%);
+$amber-300: darken($amber,40%);
+$amber-200: darken($amber,50%);
+$amber-100: darken($amber,60%);
+$amber-000: darken($amber,70%);
+
+// Pure white/black, and corresponding gradient.
+
+$white:    #fff !default;
+$gray-900: #fff !default;
+$gray-800: #eee !default;
+$gray-700: #ccc !default;
+$gray-600: #aaa !default;
+$gray-500: #888 !default;
+$gray-400: #666 !default;
+$gray-300: #444 !default;
+$gray-200: #333 !default;
+$gray-100: #222 !default;
+$gray-000: #111 !default;
+$black:    #000 !default;
+
+// Varied color pallette.
+
+$blue:    #375a7f !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #e74c3c !default;
+$orange:  #fd7e14 !default;
+$yellow:  #f39c12 !default;
+$green:   #00bc8c !default;
+$teal:    #20c997 !default;
+$cyan:    #3498db !default;
+
+// Main pallette color, and corresponding gradient.
+
+$primary: $amber-700 !default;
+$primary-900: lighten($primary,40%);
+$primary-800: lighten($primary,30%);
+$primary-700: lighten($primary,20%);
+$primary-600: lighten($primary,10%);
+$primary-500: $primary;
+$primary-400: darken($primary,10%);
+$primary-300: darken($primary,20%);
+$primary-200: darken($primary,30%);
+$primary-100: darken($primary,40%);
+$primary-000: darken($primary,50%);
+
+// Background color, and corresponding gradient.
+
+$bkg: $gray-000;
+$bkg-900: lighten($bkg,20%);
+$bkg-800: lighten($bkg,10%);
+$bkg-700: $bkg;
+$bkg-600: darken($bkg,10%);
+$bkg-500: darken($bkg,20%);
+$bkg-400: darken($bkg,30%);
+$bkg-300: darken($bkg,40%);
+$bkg-200: darken($bkg,50%);
+$bkg-100: darken($bkg,60%);
+$bkg-000: darken($bkg,70%);
+
+// Text color, and corresponding gradient.
+
+$text: $gray-600;
+$text-900: lighten($text,20%);
+$text-800: lighten($text,30%);
+$text-700: lighten($text,20%);
+$text-600: lighten($text,10%);
+$text-500: $text;
+$text-400: darken($text,10%);
+$text-300: darken($text,20%);
+$text-200: darken($text,30%);
+$text-100: darken($text,40%);
+$text-000: darken($text,50%);
+
+// Style
+
+$secondary: $primary-400 !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-600 !default;
+$dark: $gray-200 !default;
+
+// Body
+
+
+@import "fonts/comfortaa";
+
+$body-bg: $bkg;
+$body-font-family: "Comfortaa", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$body-font-color: $text;
+
+@import "defaults";
+
+// Default Overrides
+
+$primary-color: $primary;
+$alert-color: $danger;
+$global-radius: 8px;
+
+// Panels include: sidebars, toc
+
+$panel-bg: $bkg-000;
+$panel-font-color: $text-600;
+$panel-font-color-alt: $text-900;
+$panel-border-color: $primary-100;
+
+// Headings
+
+$header-font-family: $body-font-family;
+$header-font-weight: 300;
+$header-font-color: $primary-600;
+$header-line-height: 1.2;
+$header-top-margin: 1em;
+$header-word-spacing: -0.05em;
+$title-font-color: $header-font-color;
+$title-font-weight: $header-font-weight;
+$subheader-font-family: $body-font-family;
+$subheader-font-size: 1rem;
+$subheader-font-color: darken($header-font-color, 15%);
+$subheader-font-weight: normal;
+$subheader-font-style: italic;
+$subheader-line-height: 1.45;
+$subheader-top-margin: 0;
+$subheader-bottom-margin: 0.25em;
+$sidebar-header-align: center;
+$sect-divider-size: 1px;
+$sect-divider-style: solid;
+$sect-divider-color: lighten($body-bg, 5%);
+$hr-border-color: lighten($body-bg, 10%);
+$header-details-font-color: $primary-400;
+
+// Paragraphs
+
+// Inline Code
+
+@import "fonts/ibm-plex-mono";
+
+$code-font-family: 'IBM Plex Mono', 'Droid Sans Mono', 'DejaVu Sans Mono', 'Monospace', monospace;
+$code-font-size: emCalc(14px);
+$code-font-weight: normal;
+// FIXME don't forget about code in a table cell
+$code-line-height: 1.45;
+$code-color: $primary-900;
+$code-bg-color: $bkg-600;
+$code-padding: 0.1em 0.5ex;
+$code-word-spacing: -0.15em;
+$code-text-rendering: optimizeSpeed;
+$code-border-color: $body-bg;
+
+// Code Blocks
+
+$pre-font-family: $code-font-family;
+$pre-font-size: $code-font-size;
+$pre-font-color: $primary;
+$pre-border-size: 1px;
+$pre-bg: $bkg-600;
+$pre-padding: emCalc(16px);
+$pre-line-height: 1.45;
+$pre-border-color: $primary-100;
+$code-border-size: 1px;
+
+// Links
+
+$anchor-text-decoration: underline;
+
+// Lists
+
+$list-side-margin: emCalc(24px);
+$definition-list-header-margin-bottom: emCalc(5px);
+$definition-list-margin-bottom: emCalc(20px);
+
+// Blockquotes
+
+$blockquote-font-color: $title-font-color;
+$blockquote-cite-font-color: $body-font-color;
+$blockquote-cite-font-size: emCalc(15px);
+
+// Tables
+
+$table-bg: $body-bg;
+$table-head-font-size: inherit;
+$table-row-font-size: inherit;
+$table-line-height: 1.6;
+$table-head-bg: $primary-100;
+$table-even-row-bg: darken($table-bg, 5%);
+$table-border-color: $primary-200;
+
+// Icons
+
+$icon-text-shadow: 0px 0px 5px $primary-400;
+
+// TOC
+
+$toc-scroll-thumb-width: none;
+$toc-scroll-thumb-color: $primary-200;
+$toc-scroll-track-color: transparent;
+$toc-scroll-thumb-width-hover: thin;
+$toc-scroll-thumb-color-hover: $primary-400;
+$toc-scroll-track-color-hover: $primary-100;

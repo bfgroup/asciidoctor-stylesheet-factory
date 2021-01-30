@@ -1,0 +1,112 @@
+// Copyright René Ferdinand Rivera Morell 2021
+// Distributed under the Boost Software License, Version 1.0.
+// (See http://www.boost.org/LICENSE_1_0.txt)
+
+@import "settings/amber";
+@import "components/asciidoc";
+@import "components/awesome-icons";
+
+dt, th.tableblock, td.content, div.footnote {
+	// NOTE text-rendering is already set for p
+	text-rendering: optimizeLegibility;
+}
+
+// QUESTION should we tighten letter spacing of text in footnotes?
+h1, h2, p, td.content, span.alt {
+	letter-spacing: -0.01em;
+}
+
+p, td.content, div.footnote {
+strong {
+	// NOTE needs to apply anywhere we have bold prose
+	letter-spacing: -0.005em;
+}
+}
+
+// NOTE include blockquote for when it doesn't have a nested p
+p, blockquote, dt, td.content, span.alt {
+	font-size: 1.0625rem;
+}
+
+p {
+	margin-bottom: 1.25rem;
+}
+
+// restore font size in sidebar block and regular table cells
+.sidebarblock p, .sidebarblock dt, .sidebarblock td.content, p.tableblock {
+	font-size: 1em;
+}
+
+.exampleblock > .content {
+	border-color: $panel-border-color;
+	@include single-box-shadow($panel-border-color, 0, 1px, 4px);
+}
+
+.admonitionblock .icon .title {
+	font-size: 2.5em;
+	text-shadow: $icon-text-shadow;
+}
+.caution .icon .title {
+	color: $indigo;
+}
+.important .icon .title {
+	color: $red;
+}
+.note .icon .title {
+	color: $cyan;
+}
+.tip .icon .title {
+	color: $green;
+}
+.warning .icon .title {
+	color: $yellow;
+}
+
+pre.pygments {
+	background: $black !important;
+}
+
+.literalblock pre,
+.listingblock > .content > pre {
+	font-size: $pre-font-size;
+	@media #{$small} { font-size: $pre-font-size; }
+	@media #{$medium} { font-size: $pre-font-size; }
+}
+.literalblock pre,
+.listingblock > .content > pre {
+	background: $pre-bg !important;
+}
+
+.sidebarblock {
+	border-color: $panel-border-color;
+}
+
+a {
+	color: inherit;
+}
+
+#header .details {
+	color: $header-details-font-color;
+}
+
+#toc {
+	scrollbar-width: $toc-scroll-thumb-width;
+	scrollbar-color: $toc-scroll-thumb-color $toc-scroll-track-color;
+}
+#toc:hover {
+	scrollbar-width: $toc-scroll-thumb-width-hover;
+	scrollbar-color: $toc-scroll-thumb-color-hover $toc-scroll-track-color-hover;
+}
+@function calc_webkit_scrollbar_width($w) {
+	@if $w == 'none' { @return 0px; }
+	@if $w == 'thin' { @return 6px; }
+	@return 12px;
+}
+#toc::-webkit-scrollbar { width: calc_webkit_scrollbar_width($toc-scroll-thumb-width); }
+#toc::-webkit-scrollbar-thumb { background: $toc-scroll-thumb-color; }
+#toc::-webkit-scrollbar-track { background: $toc-scroll-track-color; }
+#toc:hover::-webkit-scrollbar { width: calc_webkit_scrollbar_width($toc-scroll-thumb-width-hover); }
+#toc:hover::-webkit-scrollbar-thumb { background: $toc-scroll-thumb-color-hover; }
+#toc:hover::-webkit-scrollbar-track { background: $toc-scroll-track-color-hover; }
+
+@import "components/print";
