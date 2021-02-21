@@ -23,6 +23,10 @@ strong {
 }
 }
 
+strong  {
+	text-shadow: 0px 0px 2px;
+}
+
 // NOTE include blockquote for when it doesn't have a nested p
 p, blockquote, dt, td.content, span.alt {
 	font-size: 1.0625rem;
@@ -110,3 +114,20 @@ a {
 #toc:hover::-webkit-scrollbar-track { background: $toc-scroll-track-color-hover; }
 
 @import "components/print";
+
+// An unordered list as a menubar of links.
+.menubar {
+	position: fixed;
+	display: block;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: $panel-bg;
+	border-bottom: 1px solid $panel-border-color;
+	padding: 10px;
+	text-align: center;
+}
+.menubar p { margin: 0px; }
+.menubar image { padding-right: 1em; }
+.menubar-item { padding-left: 1em; }
+@media print { .menubar { display: none; } }
